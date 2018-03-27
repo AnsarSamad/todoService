@@ -17,25 +17,25 @@ public class ToDOController {
 
 	@Autowired
 	ToDoService todoService;
-	
+
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public ToDo addToDo(@RequestParam String todo) {
-		return todoService.add(todo);		 
+	public ToDo addToDo(@RequestBody String todo) {
+		return todoService.add(todo);
 	}
-	
+
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public boolean removeTodo(@RequestParam String todoId) {
+	public boolean removeTodo(@RequestBody String todoId) {
 		todoService.remove(Long.valueOf(todoId));
-		return true;				 
+		return true;
 	}
-	
+
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public ToDo updateToDo(@RequestBody ToDo todo) {
 		return todoService.update(todo);
-	} 
-	
-	@RequestMapping(value = "/test",method=RequestMethod.GET)
-	public boolean removeTodo() {
-		return true;			 
 	}
+
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public boolean removeTodo() {
+		return true;
+	} 
 }
